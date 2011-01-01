@@ -565,3 +565,8 @@ int do_wait(int nargs, char **args)
     }
     return -1;
 }
+
+int do_umount(int nargs, char **args) {
+    return umount(args[1]);
+}
+
