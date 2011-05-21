@@ -82,6 +82,7 @@ struct {
     { "persist.sys.",     AID_SYSTEM,   0 },
     { "persist.service.", AID_SYSTEM,   0 },
     { "persist.security.", AID_SYSTEM,   0 },
+    { "net.pdp0",         AID_RADIO,    0 },
     { NULL, 0, 0 }
 };
 
