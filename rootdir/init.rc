@@ -284,7 +284,11 @@ on boot
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
 
-    class_start default
+# Run sysinit
+    start sysinit
+
+on property:oxygen.filesystem.ready=1
+    class_start 
 
 ## Daemon processes to be run by init.
 ##
@@ -414,5 +418,10 @@ service keystore /system/bin/keystore /data/misc/keystore
 
 service dumpstate /system/bin/dumpstate -s
     socket dumpstate stream 0660 shell log
+    disabled
+    oneshot
+
+# Execute files in /etc/init.d before booting
+service sysinit /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
     disabled
     oneshot
