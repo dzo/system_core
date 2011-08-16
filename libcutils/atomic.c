@@ -17,3 +17,8 @@
 #define inline
 
 #include <cutils/atomic-inline.h>
+
+int android_atomic_cmpxchg(int32_t oldvalue, int32_t newvalue,
+        volatile int32_t* addr) {
+       return android_atomic_release_cas(oldvalue,newvalue,addr);
+}

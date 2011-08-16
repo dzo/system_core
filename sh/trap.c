@@ -100,8 +100,9 @@ signame_to_signum(const char *p)
 		p += 3;
 
 	for (i = 0; i < NSIG; ++i)
-		if (strcasecmp (p, sys_signame[i]) == 0)
-			return i;
+		if (sys_signame[i] != NULL)
+			if (strcasecmp (p, sys_signame[i]) == 0)
+				return i;
 	return -1;
 }
 
